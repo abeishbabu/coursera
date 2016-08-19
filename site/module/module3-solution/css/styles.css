@@ -1,0 +1,82 @@
+body{
+  font-size: 16px;
+  color: black;
+  font-family: 'Oxygen', sans-serif;
+}
+#header-nav{
+	color:black;
+	background-color: grey;
+	border-radius: 0px;
+	border: 0px;
+	border-bottom: 2px;
+	border-color: black;
+	border-style: solid;
+}
+
+
+.navbar-brand{
+	padding:5px;
+	margin-bottom:0px;
+}
+.navbar-brand h1{
+	font-size: 1.5em;
+	color:black;
+	font-weight: bold;
+	margin-top:0px;
+	margin-bottom: 0px;
+	line-height: 1.5;
+}
+
+.navbar-brand a:hover{
+	text-decoration: none;
+}
+
+#nav-list {
+	color:black;
+	background-color: #fff;
+}
+.navbar-nav {
+    margin: 0px -15px;
+}
+#nav-list li a{
+	margin: 0px;
+	padding:5px;
+	color:black;
+}
+
+#nav-list hr{
+	margin:0px;
+	border-top:1px solid #000;
+}
+
+#nav-list a:hover{
+	text-decoration: none;
+}
+
+#menu-title{
+	margin:10px auto 10px;
+	font-size: 1.3em;
+	line-height: 1.5;
+	font-weight: bold;
+}
+.tile{
+
+	background-color: grey;
+	padding: 10px;
+	margin:5px;
+}
+
+.tile h3{
+
+	font-size:1.2em;
+	font-weight: bold;
+	line-height: 1.5;
+	margin:0px;
+	padding-bottom: 10px;
+}
+
+@media (max-width: 767px){
+	.navbar-header{
+	border-bottom: 2px solid black;
+}
+}
