@@ -1,0 +1,84 @@
+'use strict';
+angular.module('confusionApp')
+
+    .controller("MenuController", ['$scope', 'menuFactory', function($scope, menuFactory){
+
+        
+        $scope.dishes = menuFactory.getDishes();
+
+        $scope.tab = 1;
+        $scope.filterText = '';
+        $scope.select= function(tab){
+            $scope.tab= tab;
+            if (tab ===2){
+                $scope.filterText = "appetizer";
+            } else if (tab===3){
+                $scope.filterText = "dessert";
+            } else if (tab === 4){
+                $scope.filterText = "mains";
+            } else {
+                $scope.filterText ="";
+            }
+            //alert(this.filterText);
+            //return this.filterText;
+        };
+
+        $scope.isSelected = function(checkTab){
+            return ($scope.tab === checkTab);
+        };
+
+        $scope.showDetails = true;
+        $scope.toggleDetails= function(){
+            $scope.showDetails = !$scope.showDetails;
+        };
+    }]) // no semicolon
+
+
+    .controller('dishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
+          $scope.dish = menuFactory.getDish(parseInt($stateParams.id,10));
+    }])
+
+
+    .controller('ContactController', ['$scope', function($scope){
+
+            $scope.feedback = {mychannel :"", firstName : "", lastName : "", agree: false, email: "" };
+            var channels = [{value:"tel", label:"Tel."}, {value:"Email",label:"Email"}];
+            $scope.channels = channels;
+            $scope.invalidChannelSelection = false;
+
+    }])
+
+
+    .controller('FeedbackController', ['$scope', function($scope){
+            $scope.sendFeedback = function()
+            {
+                console.log($scope.feedback);
+                if($scope.feedback.agree && $scope.feedback.mychannel == "" && !$scope.feedback.mychannel)
+                {
+                    $scope.invalidChannelSelection = true;
+                    console.log("error");
+                } else {
+                    $scope.invalidChannelSelection = false;
+                    $scope.feedback = {mychannel:"", firstName:"",lastName :"", agree:false, email:""};
+                    $scope.feedbackForm.$setPristine();
+                    console.log($scope.feedback);
+                }
+            };
+    }])
+
+    // implement the IndexController and About Controller here
+
+    .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory){
+
+        $scope.promotion = menuFactory.getPromotion(0);
+        $scope.chef = corporateFactory.getLeader(3);
+        $scope.culinary = corporateFactory.getLeader(2);
+        $scope.featureDish = menuFactory.getDish(0);
+    }])
+
+    .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory){
+
+        $scope.leaders = corporateFactory.getLeaders();
+
+
+    }])
