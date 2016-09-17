@@ -57,10 +57,10 @@
           <form class="form-horizontal" name="commentForm" ng-submit="insertComment()" novalidate>
 
             <!--comment preview-->
-            <blockquote ng-repeat="cmnt in dish.comments | orderBy:sortby">
-              <p>{{cmnt.rating}}&nbsp;Stars</p>
-              <p>{{cmnt.comment}}</p>
-              <footer>{{cmnt.author}}&nbsp;{{cmnt.date | date}}</footer>
+            <blockquote ng-hide="commentForm.$pristine || commentForm.$invalid">
+              <p>{{comment.userRating}}&nbsp;Stars</p>
+              <p>{{comment.description}}</p>
+              <footer>{{comment.name}}</footer>
             </blockquote>
 
             <!--comment form-->
