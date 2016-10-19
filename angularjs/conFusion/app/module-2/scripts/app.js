@@ -68,7 +68,7 @@ var app = angular.module('confusionApp',[]);
    			var cmt ={};
    			$scope.cmt = cmt;
    			$scope.cmt.author = $scope.comment.name;
-   			$scope.cmt.rating = $scope.comment.userRating;
+   			$scope.cmt.rating = parseInt($scope.comment.userRating);
    			$scope.cmt.comment = $scope.comment.description;
    			$scope.cmt.date = $scope.comment.date;
 
