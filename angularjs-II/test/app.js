@@ -11,7 +11,10 @@ function FoundItems(){
 		scope: {
 			items: "<",
 			onRemove: "&"
-		}
+		},
+		controller: FoundItemsDirectiveController,
+		controllerAs: "menu",
+		bindToController: true
 		
 	};
 	return ddo;
