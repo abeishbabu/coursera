@@ -34,9 +34,7 @@ function MenuSearchService(MenuService){
 	
 	service.getMatchedMenuItems = function(searchTerm){
 		console.log("Search Term: "+searchTerm);
-		//clear the array, if any item already present
-		foundMenuItems = [];
-		console.log("array cleared");
+		
 		var promise = MenuService.getMenu();
 		promise.then(function(response){
 			var menu = response.data.menu_items;
