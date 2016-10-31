@@ -7,11 +7,7 @@
 	<div ng-controller="NarrowItDownController as menu">
 		<input type="text" ng-model ="menu.searchTerm" placeholder="Please type search term here">
 		<button ng-click="menu.narrowItDown();">Narrow It Down</button>
-		<ol>
-			<li ng-repeat="itm in menu.found">
-				{{itm.short_name}} *** {{itm.description}}
-			</li>
-		</ol>
+		<found-item items="menu.found" ></found-item>
 	</div>
 </body>
 </html>
