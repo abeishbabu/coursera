@@ -27,7 +27,7 @@ function NarrowItDownController(MenuSearchService){
 		//menu.found = MenuSearchService.getMenuItems();
 	};
 	menu.removeMenuItem = function(index) {
-		foundMenuItems.splice(index,1);
+		MenuSearchService.removeMenuItem(index);
 	};
 }
 
