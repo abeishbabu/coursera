@@ -24,7 +24,7 @@ function ShoppingListDirective(){
 function ShoppingListDirectiveController(){
 	var list = this;
 	list.cookiesInList = function(){
-		for(var i = o; i < list.items.length; i = i + 1)
+		for(var i = 0; i < list.items.length; i = i + 1)
 		{
 			var nm = list.items[i].name;
 			if (nm.toLowerCase().indexOf('cookie') !== -1){
