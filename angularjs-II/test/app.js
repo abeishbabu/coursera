@@ -23,11 +23,13 @@ function MenuSearchService(MenuService){
 	var foundMenuItems = [];
 	
 	service.getMatchedMenuItems = function(searchTerm){
+		console.log("Search Term: "+searchTerm);
 		var promise = MenuService.getMenu();
 		promise.then(function(response){
 			console.log(response.data);
 			//search the description for the searchTerm
 			for(var i = 0; i < response.data.length; i = i + 1) {
+				console.log("Search Term: "+ response.data[i].description);
 				if ( response.data[i].description.toLowerCase().indexOf(searchTerm) > -1)
 					foundMenuItems.push(response.data[i]);
 			}
