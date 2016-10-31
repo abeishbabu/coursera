@@ -27,10 +27,12 @@ function MenuSearchService(MenuService){
 		var promise = MenuService.getMenu();
 		promise.then(function(response){
 			console.log(response.data);
+			console.log(response.data.length);
+			console.log(response.data.menu_items.length);
 			//search the description for the searchTerm
-			for(var i = 0; i < response.data.length; i = i + 1) {
-				console.log("Search Term: "+ response.data[i].description);
-				if ( response.data[i].description.toLowerCase().indexOf(searchTerm) > -1)
+			for(var i = 0; i < response.data.menu_items.length; i = i + 1) {
+				console.log("Search Term: "+ response.data.menu_items[i].description);
+				if ( response.data.menu_items[i].description.toLowerCase().indexOf(searchTerm) > -1)
 					foundMenuItems.push(response.data[i]);
 			}
 			console.log("found items:");
