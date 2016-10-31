@@ -1,7 +1,7 @@
 (function(){
 angular.module("ShoppingListDirectiveApp",[])
 .controller("ShoppingListController1", ShoppingListController1)
-.controller("ShoppingListController2", ShoppingListController2)
+//.controller("ShoppingListController2", ShoppingListController2)
 .factory("ShoppingListFactory", ShoppingListFactory)
 .directive("shoppingList", ShoppingList);
 
