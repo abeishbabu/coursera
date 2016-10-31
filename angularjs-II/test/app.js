@@ -1,20 +1,37 @@
 (function(){
-angular.module("ShoppingListDirectiveApp",[])
 .controller("ShoppingListController1", ShoppingListController1)
 //.controller("ShoppingListController2", ShoppingListController2)
 .factory("ShoppingListFactory", ShoppingListFactory)
-.directive("shoppingList", ShoppingList);
+.directive("shoppingList", ShoppingListDirective);
 
 
-function ShoppingList(){
+function ShoppingListDirective(){
 	var ddo = {
 		templateUrl : "shoppingList.html",
 		scope: {
-			list: "=myList",
-			title: "@title"
-		}
+			items: "<",
+			title: "@"
+		},
+		controller: "ShoppingListDirectiveController",
+		controllerAs: "list",
+		bindToController: true
 	};
 	return ddo;
+}
+
+
+function ShoppingListDirectiveController(){
+	var list = this;
+	list.cookiesInList = function(){
+		for(var i = o; i < list.items.length; i = i + 1)
+		{
+			var nm = list.items[i].name;
+			if (nm.toLowerCase().indexOf('cookie') !== -1){
+				return true;
+			} 
+		}
+		return false;
+	};
 }
 
 ShoppingListController1.$inject=["ShoppingListFactory"];
