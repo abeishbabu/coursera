@@ -12,6 +12,8 @@ function ShoppingListDirective(){
 		scope: {
 			items: "<",
 			title: "@"
+			badRemove:"=",
+			onRemove: "&"
 		},
 		controller: ShoppingListDirectiveController,
 		controllerAs: "list",
@@ -19,6 +21,7 @@ function ShoppingListDirective(){
 	};
 	return ddo;
 }
+
 
 
 function ShoppingListDirectiveController(){
