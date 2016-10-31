@@ -13,7 +13,7 @@ function NarrowItDownController(MenuSearchService){
 	var menu = this;
 	menu.found = MenuSearchService.getMenuItems();
 	menu.narrowItDown = function(){
-		MenuSearchService.getMatchedMenuItems(menu.name);
+		MenuSearchService.getMatchedMenuItems(menu.searchTerm);
 	};
 }
 
@@ -22,10 +22,15 @@ function MenuSearchService(MenuService){
 	var service = this;
 	var foundMenuItems = [];
 	
-	service.getMatchedMenuItems = function(name){
+	service.getMatchedMenuItems = function(searchTerm){
 		var promise = MenuService.getMenu();
 		promise.then(function(response){
 			console.log(response.data);
+			//search the description for the searchTerm
+			for(var i = 0; i < response.data.length; i = i + 1) {
+				if ( response.data[i].description.toLowerCase().indexOf(searchTerm) > -1)
+					foundMenuItems.push(response.data[i]);
+			}
 		})
 		.catch(function(errorResponse){
 			console.log(errorResponse);
