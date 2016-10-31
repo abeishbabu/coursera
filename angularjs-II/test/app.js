@@ -2,8 +2,18 @@
 angular.module("NarrowItDownApp",[])
 .controller("NarrowItDownController", NarrowItDownController)
 .service("MenuSearchService", MenuSearchService)
-.service("MenuService", MenuService);
-//.directive("foundItem", FoundItem);
+.service("MenuService", MenuService)
+.directive("foundItem", FoundItem);
+
+function FoundItem(){
+	var ddo = {
+		templateUrl: "menulist.html",
+		scope: {
+			items: "<"
+		}
+	};
+	return ddo;
+}
 
 
 
