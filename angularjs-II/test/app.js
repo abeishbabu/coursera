@@ -31,6 +31,8 @@ function MenuSearchService(MenuService){
 				if ( response.data[i].description.toLowerCase().indexOf(searchTerm) > -1)
 					foundMenuItems.push(response.data[i]);
 			}
+			console.log("found items:");
+			console.log(foundMenuItems);
 		})
 		.catch(function(errorResponse){
 			console.log(errorResponse);
