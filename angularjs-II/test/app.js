@@ -9,7 +9,8 @@ function FoundItems(){
 	var ddo = {
 		templateUrl: "menulist.html",
 		scope: {
-			items: "<"
+			items: "<",
+			onRemove: "&"
 		}
 		
 	};
