@@ -29,11 +29,12 @@ function MenuSearchService(MenuService){
 			console.log(response.data);
 			console.log(response.data.length);
 			console.log(response.data.menu_items.length);
+			var menu = response.data.menu_items;
 			//search the description for the searchTerm
-			for(var i = 0; i < response.data.menu_items.length; i = i + 1) {
-				console.log("Search Term: "+ response.data.menu_items[i].description);
-				if ( response.data.menu_items[i].description.toLowerCase().indexOf(searchTerm) > -1)
-					foundMenuItems.push(response.data[i]);
+			for(var i = 0; i < menu.length; i = i + 1) {
+				console.log("Search Term: "+ menu[i].description);
+				if ( menu[i].description.toLowerCase().indexOf(searchTerm) > -1)
+					foundMenuItems.push(menu[i]);
 			}
 			console.log("found items:");
 			console.log(foundMenuItems);
