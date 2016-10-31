@@ -7,7 +7,7 @@
 	<div ng-controller="NarrowItDownController as menu">
 		<input type="text" ng-model ="menu.searchTerm" placeholder="Please type search term here">
 		<button ng-click="menu.narrowItDown();">Narrow It Down</button>
-		<found-item items="menu.found" ></found-item>
+		<found-items items="menu.found" on-remove="menu.removeMenuItem(index);"></found-items>
 	</div>
 </body>
 </html>
