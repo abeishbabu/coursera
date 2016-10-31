@@ -26,6 +26,9 @@ function NarrowItDownController(MenuSearchService){
 		MenuSearchService.getMatchedMenuItems(menu.searchTerm);
 		//menu.found = MenuSearchService.getMenuItems();
 	};
+	menu.removeMenuItem = function(index) {
+		foundMenuItems.splice(index,1);
+	};
 }
 
 MenuSearchService.$inject=["MenuService"];
@@ -58,7 +61,7 @@ function MenuSearchService(MenuService){
 	
 	service.removeMenuItem = function(index) {
 		foundMenuItems.splice(index,1);
-	}
+	};
 }
 
 MenuService.$inject= ["$http"];
