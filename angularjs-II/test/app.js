@@ -1,91 +1,51 @@
 (function(){
-angular.module("ShoppingListDirectiveApp",[])
-.controller("ShoppingListController1", ShoppingListController1)
-//.controller("ShoppingListController2", ShoppingListController2)
-.factory("ShoppingListFactory", ShoppingListFactory)
-.directive("shoppingList", ShoppingListDirective);
-
-
-function ShoppingListDirective(){
-	var ddo = {
-		templateUrl : "shoppingList.html",
-		scope: {
-			items: "<",
-			title: "@",
-			badRemove:"=",
-			onRemove: "&"
-		},
-		controller: ShoppingListDirectiveController,
-		controllerAs: "list",
-		bindToController: true
-	};
-	return ddo;
-}
+angular.module("NarrowItDownApp",[])
+.controller("NarrowItDownController", NarrowItDownController)
+.service("MenuSearchService", MenuSearchService)
+.service("MenuService", MenuService);
+//.directive("foundItem", FoundItem);
 
 
 
-function ShoppingListDirectiveController(){
-	var list = this;
-	list.cookiesInList = function(){
-		for(var i = 0; i < list.items.length; i = i + 1)
-		{
-			var nm = list.items[i].name;
-			if (nm.toLowerCase().indexOf('cookie') !== -1){
-				return true;
-			} 
-		}
-		return false;
+
+NarrowItDownController.$inject = ["MenuSearchService"];
+function NarrowItDownController(MenuSearchService){
+	var menu = this;
+	menu.found = MenuSearchService.getMenuItems();
+	menu.narrowItDown = function(){
+		MenuSearchService.getMatchedMenuItems(menu.name);
 	};
 }
 
-ShoppingListController1.$inject=["ShoppingListFactory"];
-function ShoppingListController1(ShoppingListFactory){
-	var list = this;
-	var shoppingList = ShoppingListFactory();
-	
-	
-	list.items = shoppingList.getItems();
-	list.title = "Shopping List 1 Count# "  + list.items.length;
-	
-	list.addItem = function(){
-		shoppingList.addItem(list.name, list.quantity);
-		list.title = "Shopping List 1 Count# "  + list.items.length;
-		console.log(list.name + "--" +  list.quantity);
-	};
-	list.removeItem = function(index){
-		shoppingList.removeItem(index);
-		list.title = "Shopping List 1 Count# "  + list.items.length;
-	};
-	
-}
-
-function ShoppingListService(maxItems){
+MenuSearchService.$inject=["MenuService"];
+function MenuSearchService(MenuService){
 	var service = this;
-	var items = [];
+	var foundMenuItems = [];
 	
-	service.addItem = function(name, quantity){
-		var item = {};
-		item.name = name;
-		item.quantity = quantity;
-		items.push(item);
+	service.getMatchedMenuItems = function(name){
+		var promise = MenuService.getMenu();
+		promise.then(function(response){
+			console.log(response.data);
+		})
+		.catch(function(errorResponse){
+			console.log(errorResponse);
+		});
 	};
-	service.removeItem = function(index){
-		items.splice(index,1);
-	};
-	service.getItems = function(){
-		return items;
+	service.getMenuItems = function(){
+		return foundMenuItems;
 	};
 }
 
-function ShoppingListFactory(){
-	var factory = function(maxItems){
-		return new ShoppingListService(maxItems);
-	};
-	return factory;
+MenuService.$inject= ["$http"];
+function MenuService($http){
+	var service = this;
+	service.getMenu = function(){
+		var response = $http({
+			method: "GET",
+			url: "https://davids-restaurant.herokuapp.com/menu_items.json"
+		});
+	}
+	
 }
-
-
-
-
 
 })();
