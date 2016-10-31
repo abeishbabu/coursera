@@ -36,7 +36,7 @@ function MenuSearchService(MenuService){
 		console.log("Search Term: "+searchTerm);
 		var promise = MenuService.getMenu();
 		promise.then(function(response){
-			
+			foundMenuItems = [];
 			var menu = response.data.menu_items;
 			//search the description for the searchTerm
 			for(var i = 0; i < menu.length; i = i + 1) {
