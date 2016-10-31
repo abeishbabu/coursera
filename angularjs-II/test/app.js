@@ -23,7 +23,7 @@ function NarrowItDownController(MenuSearchService){
 	menu.found = MenuSearchService.getMenuItems();
 	menu.narrowItDown = function(){
 		MenuSearchService.getMatchedMenuItems(menu.searchTerm);
-		menu.found = MenuSearchService.getMenuItems();
+		//menu.found = MenuSearchService.getMenuItems();
 	};
 }
 
@@ -34,9 +34,11 @@ function MenuSearchService(MenuService){
 	
 	service.getMatchedMenuItems = function(searchTerm){
 		console.log("Search Term: "+searchTerm);
+		//clear the array, if any item already present
+		foundMenuItems = 
+		console.log("array cleared");
 		var promise = MenuService.getMenu();
 		promise.then(function(response){
-			foundMenuItems = [];
 			var menu = response.data.menu_items;
 			//search the description for the searchTerm
 			for(var i = 0; i < menu.length; i = i + 1) {
@@ -44,8 +46,7 @@ function MenuSearchService(MenuService){
 				if ( menu[i].description.toLowerCase().indexOf(searchTerm) > -1)
 					foundMenuItems.push(menu[i]);
 			}
-			console.log("found items:");
-			console.log(foundMenuItems);
+			console.log("found items:" + foundMenuItems.length);
 		})
 		.catch(function(errorResponse){
 			console.log(errorResponse);
