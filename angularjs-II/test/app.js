@@ -50,6 +50,7 @@ function ShoppingListController1(ShoppingListFactory){
 	list.addItem = function(){
 		shoppingList.addItem(list.name, list.quantity);
 		list.title = "Shopping List 1 Count# "  + list.items.length;
+		console.log(list.name + "--" +  list.quantity);
 	};
 	list.removeItem = function(index){
 		shoppingList.removeItem(index);
