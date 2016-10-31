@@ -13,7 +13,7 @@ function ShoppingListDirective(){
 			items: "<",
 			title: "@"
 		},
-		controller: "ShoppingListDirectiveController",
+		controller: ShoppingListDirectiveController,
 		controllerAs: "list",
 		bindToController: true
 	};
