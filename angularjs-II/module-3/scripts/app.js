@@ -41,8 +41,7 @@ function MenuSearchService(MenuService){
 		var promise = MenuService.getMenu();
 		promise.then(function(response){
 			//clearing existing menu items
-			foundMenuItems = [];
-			//foundMenuItems.length= 0;
+			foundMenuItems.length= 0;
 			console.log("ARRAY CLEARED");
 			var menu = response.data.menu_items;
 			//search the description for the searchTerm
