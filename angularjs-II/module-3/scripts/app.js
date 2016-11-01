@@ -10,9 +10,7 @@ function FoundItems(){
 		templateUrl: "menulist.html",
 		scope: {
 			items: "<",
-			onRemove: "&", 
-			error:"@",
-			loader:"@"
+			onRemove: "&"
 		}
 	};
 	return ddo;
@@ -22,19 +20,10 @@ function FoundItems(){
 NarrowItDownController.$inject = ["MenuSearchService"];
 function NarrowItDownController(MenuSearchService){
 	var menu = this;
-	menu.error = "";
-	menu.loader = 0;
 	menu.found = MenuSearchService.getMenuItems();
 	menu.narrowItDown = function(){
-		console.log("STARTED CALLING FUNCTION");
-		menu.loader = 1;
+
 		MenuSearchService.getMatchedMenuItems(menu.searchTerm);
-		if (menu.found.length ==0 )
-			menu.error = "Nothing Found";
-		else
-			menu.error = "";
-		menu.loader = 1;
-		console.log("END CALLING FUNCTION");
 	};
 	menu.removeMenuItem = function(index) {
 		MenuSearchService.removeMenuItem(index);
@@ -47,7 +36,7 @@ function MenuSearchService(MenuService){
 	var foundMenuItems = [];
 	
 	service.getMatchedMenuItems = function(searchTerm){
-		console.log("Search Term: "+searchTerm);
+		//console.log("Search Term: "+searchTerm);
 		
 		var promise = MenuService.getMenu();
 		promise.then(function(response){
