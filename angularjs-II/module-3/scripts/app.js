@@ -21,9 +21,12 @@ function FoundItems(){
 NarrowItDownController.$inject = ["MenuSearchService"];
 function NarrowItDownController(MenuSearchService){
 	var menu = this;
+	menu.error = "";
 	menu.found = MenuSearchService.getMenuItems();
 	menu.narrowItDown = function(){
 		MenuSearchService.getMatchedMenuItems(menu.searchTerm);
+		if (menu.found.length ==0 )
+			menu.error = "NOTHING FOUND";
 	};
 	menu.removeMenuItem = function(index) {
 		MenuSearchService.removeMenuItem(index);
@@ -50,6 +53,7 @@ function MenuSearchService(MenuService){
 				if ( menu[i].description.toLowerCase().indexOf(searchTerm) > -1)
 					foundMenuItems.push(menu[i]);
 			}
+			
 			
 		})
 		.catch(function(errorResponse){
