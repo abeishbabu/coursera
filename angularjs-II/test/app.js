@@ -16,8 +16,6 @@ function FoundItems(){
 	return ddo;
 }
 
-function FoundItemsDirectiveController(){
-}
 	
 NarrowItDownController.$inject = ["MenuSearchService"];
 function NarrowItDownController(MenuSearchService){
@@ -25,7 +23,6 @@ function NarrowItDownController(MenuSearchService){
 	menu.found = MenuSearchService.getMenuItems();
 	menu.narrowItDown = function(){
 		MenuSearchService.getMatchedMenuItems(menu.searchTerm);
-		//menu.found = MenuSearchService.getMenuItems();
 	};
 	menu.removeMenuItem = function(index) {
 		MenuSearchService.removeMenuItem(index);
@@ -52,7 +49,7 @@ function MenuSearchService(MenuService){
 				if ( menu[i].description.toLowerCase().indexOf(searchTerm) > -1)
 					foundMenuItems.push(menu[i]);
 			}
-			console.log("found items:" + foundMenuItems.length);
+			
 		})
 		.catch(function(errorResponse){
 			console.log(errorResponse);
