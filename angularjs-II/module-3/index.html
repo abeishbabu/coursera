@@ -11,11 +11,13 @@
 <body>
 	<div class="container" ng-controller="NarrowItDownController as menu">
 		<h1>Narrow Down Your Chinese Menu Choice</h1>
+		<div class="row">
 		<div class="form-group">
 			<input type="text" placeholder="search term" class="form-control" ng-model ="menu.searchTerm">
 		</div>
 		<div class="form-group narrow-button">
 			<button class="btn btn-primary" ng-click="menu.narrowItDown();">Narrow It Down</button>
+		</div>
 		</div>
 		<div class="form-group row">
 			<found-items items="menu.found" on-remove="menu.removeMenuItem(index);"></found-items>
