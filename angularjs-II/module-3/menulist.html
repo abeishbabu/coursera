@@ -2,7 +2,10 @@
  <ol class="list-group">
 	<li class="list-group-item" ng-repeat="itm in items">
 		{{itm.short_name}}, {{itm.description}}
-	        <button class="glyphicon glyphicon-remove btn-danger" ng-click="onRemove({index: $index});">Don't want this one! </button>	
+		<button class="btn btn-danger" ng-click="onRemove({index: $index});">
+			<span class="glyphicon glyphicon-remove"></span>
+			Don't want this one! 
+		</button>	
 	</li>
  </ol>
  <div ng-if = "items.length==0"> Nothing found </div>
