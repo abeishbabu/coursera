@@ -1,7 +1,9 @@
+<div class="loader">
 <ol>
 	<li ng-repeat="itm in items">
-		{{itm.short_name}} *** {{itm.description}}
+		{{itm.short_name}}, {{itm.description}}
 	        <button ng-click="onRemove({index: $index});">Don't want this one! </button>	
 	</li>
 </ol>
-<div ng-if != "items.length"> Nothing found </div>
+<div ng-if = "items.length==0"> Nothing found </div>
+</div>
