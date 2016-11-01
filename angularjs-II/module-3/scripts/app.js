@@ -11,7 +11,8 @@ function FoundItems(){
 		scope: {
 			items: "<",
 			onRemove: "&", 
-			error:"@"
+			error:"@",
+			loader: "@"
 		}
 	};
 	return ddo;
@@ -22,11 +23,16 @@ NarrowItDownController.$inject = ["MenuSearchService"];
 function NarrowItDownController(MenuSearchService){
 	var menu = this;
 	menu.error = "";
+	menu.loader = "";
 	menu.found = MenuSearchService.getMenuItems();
 	menu.narrowItDown = function(){
+		menu.loader = "<div class='loader'></div>";
 		MenuSearchService.getMatchedMenuItems(menu.searchTerm);
 		if (menu.found.length ==0 )
-			menu.error = "NOTHING FOUND";
+			menu.error = "<h4>Nothing Found</h4>";
+		else
+			menu.error = "";
+		menu.loader ="";
 	};
 	menu.removeMenuItem = function(index) {
 		MenuSearchService.removeMenuItem(index);
