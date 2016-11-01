@@ -1,4 +1,4 @@
-<div ng-if = "0"><div class="loader" style="display:block"></div></div>
+
  <ol class="list-group">
 	<li class="list-group-item" ng-repeat="itm in items">
 		{{itm.short_name}}, {{itm.description}}
@@ -8,5 +8,5 @@
 		</button>	
 	</li>
  </ol>
-<div ng-if = "items.length==0"><h4> {{error}} </h4> </div>
+<div ng-if = "items.length==0"><h4> Nothing Found </h4> </div>
 
