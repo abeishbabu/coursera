@@ -65,6 +65,7 @@ function MenuSearchService(MenuService){
 	};
 	
 	service.removeMenuItem = function(index) {
+		console.log( "ïndex="+  index);
 		foundMenuItems.splice(index,1);
 	};
 }
