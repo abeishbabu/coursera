@@ -17,7 +17,9 @@
 		<div class="form-group narrow-button">
 			<button class="btn btn-primary" ng-click="menu.narrowItDown();">Narrow It Down</button>
 		</div>
-		<found-items items="menu.found" on-remove="menu.removeMenuItem(index);"></found-items>
+		<div class="loader">
+			<found-items items="menu.found" on-remove="menu.removeMenuItem(index);"></found-items>
+		</div>
 	</div>
 </body>
 </html>
