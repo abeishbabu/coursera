@@ -1,9 +1,9 @@
-<div class="loader">
-<ol>
-	<li ng-repeat="itm in items">
+<div class="form-group">
+ <ol class="list-group">
+	<li class="list-group-item" ng-repeat="itm in items">
 		{{itm.short_name}}, {{itm.description}}
-	        <button ng-click="onRemove({index: $index});">Don't want this one! </button>	
+	        <button class="glyphicon glyphicon-remove btn-danger" ng-click="onRemove({index: $index});">Don't want this one! </button>	
 	</li>
-</ol>
-<div ng-if = "items.length==0"> Nothing found </div>
+ </ol>
+ <div ng-if = "items.length==0"> Nothing found </div>
 </div>
