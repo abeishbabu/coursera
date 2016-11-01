@@ -1,7 +1,7 @@
 
  <ol class="list-group">
 	<li class="list-group-item" ng-repeat="itm in items">
-		{{itm.short_name}}, {{itm.description}}
+		{{itm.name}},{{itm.short_name}}, {{itm.description}}
 		<button class="btn btn-danger" ng-click="onRemove({index: $index});">
 			<span class="glyphicon glyphicon-remove"></span>
 			Don't want this one! 
