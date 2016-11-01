@@ -10,7 +10,8 @@ function FoundItems(){
 		templateUrl: "menulist.html",
 		scope: {
 			items: "<",
-			onRemove: "&"
+			onRemove: "&", 
+			error:"@"
 		}
 	};
 	return ddo;
