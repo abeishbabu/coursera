@@ -38,7 +38,7 @@ function MenuSearchService(MenuService){
 	service.getMatchedMenuItems = function(searchTerm){
 		//console.log("Search Term: "+searchTerm);
 		foundMenuItems.length= 0;
-		if (searchTerm == ""){
+		if (searchTerm != ""){
 		var promise = MenuService.getMenu();
 		promise.then(function(response){
 			//clearing existing menu items
