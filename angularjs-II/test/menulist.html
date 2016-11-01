@@ -1,6 +1,6 @@
 <ol>
-	<li ng-repeat="itm in menu.items">
+	<li ng-repeat="itm in items">
 		{{itm.short_name}} *** {{itm.description}}
-	<button ng-click="menu.onRemove({index: $index});">Don't want this one! </button>	
+	<button ng-click="onRemove({index: $index});">Don't want this one! </button>	
 	</li>
 </ol>
