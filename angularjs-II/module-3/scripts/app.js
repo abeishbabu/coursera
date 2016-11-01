@@ -12,7 +12,7 @@ function FoundItems(){
 			items: "<",
 			onRemove: "&", 
 			error:"@",
-			loader: "@"
+			loader:"@"
 		}
 	};
 	return ddo;
@@ -23,16 +23,18 @@ NarrowItDownController.$inject = ["MenuSearchService"];
 function NarrowItDownController(MenuSearchService){
 	var menu = this;
 	menu.error = "";
-	menu.loader = "";
+	menu.loader = 0;
 	menu.found = MenuSearchService.getMenuItems();
 	menu.narrowItDown = function(){
-		menu.loader = "<div class='loader'></div>";
+		console.log("STARTED CALLING FUNCTION");
+		menu.loader = 1;
 		MenuSearchService.getMatchedMenuItems(menu.searchTerm);
 		if (menu.found.length ==0 )
-			menu.error = "<h4>Nothing Found</h4>";
+			menu.error = "Nothing Found";
 		else
 			menu.error = "";
-		menu.loader ="";
+		menu.loader = 1;
+		console.log("END CALLING FUNCTION");
 	};
 	menu.removeMenuItem = function(index) {
 		MenuSearchService.removeMenuItem(index);
@@ -55,7 +57,7 @@ function MenuSearchService(MenuService){
 			var menu = response.data.menu_items;
 			//search the description for the searchTerm
 			for(var i = 0; i < menu.length; i = i + 1) {
-				console.log("Search Term: "+ menu[i].description);
+				//console.log("Search Term: "+ menu[i].description);
 				if ( menu[i].description.toLowerCase().indexOf(searchTerm) > -1)
 					foundMenuItems.push(menu[i]);
 			}
