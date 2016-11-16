@@ -8,6 +8,7 @@ angular.module('MenuApp')
   function CategoriesController(items) {
       var mainList = this;
       mainList.items = items;
+      console.log("ITEMS:"+  items);
   }
 
 })();
