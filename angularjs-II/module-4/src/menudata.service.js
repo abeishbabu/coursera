@@ -7,10 +7,12 @@ angular.module('data')
     var service = this;
     
     service.getAllCategories = function(){
+	console.log(ïnside getAllCategories);
       var response = $http({
-			       method: "GET",
-			       url: "https://davids-restaurant.herokuapp.com/categories.json"
-		    });
+		method: "GET",
+		url: "https://davids-restaurant.herokuapp.com/categories.json"
+      });
+	console.log("getAllcategories:"+  response);
       return response;
     };
   
