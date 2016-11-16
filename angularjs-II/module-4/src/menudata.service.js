@@ -2,7 +2,8 @@
 angular.module('data')
  .service("MenuDataService", MenuDataService);
  
- function MenuDataService (){
+ MenuDataService.$inject= ["$http"];
+ function MenuDataService ($http){
     console.log("inside MenuDataService");
     var service = this;
     
