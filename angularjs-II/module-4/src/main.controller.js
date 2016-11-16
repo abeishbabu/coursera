@@ -5,7 +5,7 @@ angular.module('MenuApp')
   .controller('MenuAppController', MenuAppController);
 
   MenuAppController.$inject = ['items'];
-  function MainAppController(items) {
+  function MenuAppController(items) {
       var mainList = this;
       mainList.items = items;
   }
