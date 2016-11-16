@@ -19,14 +19,23 @@ angular.module('MenuApp')
         templateUrl: 'src/templates/home.template.html'
       })
 
-    // Premade list page
+    // Categories page
      .state('categories', {
         url: '/categories',
         templateUrl: 'src/templates/categories.template.html',
         controller: 'CategoriesController as catList',
         resolve: {
             items: ['MenuDataService', function (MenuDataService) {
-            return MenuDataService.getAllCategories();
+              
+              var promise = MenuDataService.getAllCategories();
+		          promise.then(function(response){
+                  console.log("response received: " + response);
+			            return response;
+		          })
+		          .catch(function(errorResponse){
+			            console.log(errorResponse);
+              });
+              
         }]
       }
     })
