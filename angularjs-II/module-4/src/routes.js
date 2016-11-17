@@ -22,7 +22,7 @@ angular.module('MenuApp')
     // Categories page
      .state('categories', {
         url: '/categories',
-        templateUrl: 'src/templates/categories.template.html',
+        templateUrl: 'src/templates/main-categorieslist.template.html',
         controller: 'CategoriesController as catList',
         resolve: {
             items: ['MenuDataService', function (MenuDataService) {
