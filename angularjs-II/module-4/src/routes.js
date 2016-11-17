@@ -26,15 +26,15 @@ angular.module('MenuApp')
         controller: 'CategoriesController as catList',
         resolve: {
             items: ['MenuDataService', function (MenuDataService) {
-              
-              var promise = MenuDataService.getAllCategories();
+              return MenuDataService.getAllCategories();
+              /*var promise = MenuDataService.getAllCategories();
 		          promise.then(function(response){
                   console.log("response received: " + response);
 			            return response;
 		          })
 		          .catch(function(errorResponse){
 			            console.log(errorResponse);
-              });
+              });*/
               
         }]
       }
