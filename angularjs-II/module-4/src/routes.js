@@ -26,27 +26,25 @@ angular.module('MenuApp')
         controller: 'CategoriesController as catList',
         resolve: {
             items: ['MenuDataService', function (MenuDataService) {
-              //return MenuDataService.getAllCategories();
-              var promise = MenuDataService.getAllCategories();
-		          promise.then(function(response){
-                  console.log("response received: " + response);
-			            return response;
-		          })
-		          .catch(function(errorResponse){
-			            console.log(errorResponse);
-              });
-	      return promise;
-              
+                return MenuDataService.getAllCategories();
         }]
       }
     })
 
-    /*.state('mainList.itemDetail', {
-        url: '/item-detail/{itemId}',
-        templateUrl: 'src/shoppinglist/templates/item-detail.template.html',
-        controller: "ItemDetailController as itemDetail"
-     });
-    */
+    //Item page based on selected category
+   .state('itemDetail', {
+    url: '/items/{itemId}',
+    templateUrl: 'src/templates/items-detail.template.html',
+    controller: 'ItemsDetailController  as  itemsDetail',
+    resolve: {
+      items: ['$stateParams', 'MenuDataService',
+            function ($stateParams, MenuDataService) {
+              return MenuDataService.getItemsForCategory($stateParams.itemId);
+            }]
+    }
+  });
+
+
     ;
 }
 })();

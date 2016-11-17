@@ -1,0 +1,9 @@
+<a ui-sref="home">Home</a> &lt;
+<a ui-sref="categories">Category List</a> &lt;
+{{itemsDetail.items.category.name}} <!-- bread crumb to show the category name-->
+
+<ul>
+  <li ng-repeat="itm in itemsDetail.items.menu_items " >
+      {{ itm.id}} ,  {{itm.name}} , {{itm.description}} 
+  </li>
+</ul>
