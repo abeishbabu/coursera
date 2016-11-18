@@ -9,7 +9,7 @@ angular.module('MenuApp')
   CategoriesController.$inject = ['items'];
   function CategoriesController(items) {
       var catList = this;
-      catList.items =  items.data;  //data part of the response contains the JSON ARRAY
+      catList.items =  items;  //data part of the response contains the JSON ARRAY
   }
 
   ItemsDetailController.$inject = ['items'];
