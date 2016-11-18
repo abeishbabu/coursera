@@ -14,8 +14,8 @@ angular.module('MenuApp')
 
   ItemsDetailController.$inject = ['items'];
   function ItemsDetailController(items) {
-        var itemsDetail = this;
-      itemsDetail.items =  items.data;  //data part of the response contains the JSON ARRAY
+      var itemsDetail = this;
+      itemsDetail.items =  items;  //data part of the response contains the JSON ARRAY
   }
 
 })();
