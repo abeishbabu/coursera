@@ -23,13 +23,21 @@ angular.module('data')
 
 
     service.getItemsForCategory = function(categoryShortName){
-	console.log("ïnside getItemsForCategory for:" + categoryShortName);
+	/*console.log("ïnside getItemsForCategory for:" + categoryShortName);
       var response = $http({
 		method: "GET",
 		url: baseAPIURL +  "menu_items.json?category=" +  categoryShortName
       });
 
-      return response;
+      return response;*/
+	var config = {};
+    	if (categoryShortName) {
+      		config.params = {category: categoryShortName};
+    	}
+
+    	return $http.get(baseAPIURL + '/menu_items.json', config).then(function (response) {
+      		return response.data;
+	});
     };
 
   
