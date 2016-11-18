@@ -9,13 +9,16 @@ angular.module('data')
     var service = this;
     
     service.getAllCategories = function(){
-	console.log("ïnside getAllCategories");
+	/*console.log("ïnside getAllCategories");
       var response = $http({
 		method: "GET",
 		url: baseAPIURL +  "categories.json"
       });
 
-      return response;
+      return response;*/
+      	return $http.get(baseAPIURL + '/categories.json').then(function (response) {
+      		return response.data;
+	});
     };
 
 
