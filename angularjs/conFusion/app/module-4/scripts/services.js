@@ -1,6 +1,7 @@
   'use strict';
   angular.module('confusionApp')
-  .constant("baseURL","http://localhost:3000/")
+  //.constant("baseURL","http://localhost:3000/")
+  .constant("baseURL","https://abeish-ionic.herokuapp.com/")
   .factory('menuFactory',['$resource' , 'baseURL', function($resource, baseURL){
 
    var menuFac = {};
